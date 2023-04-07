@@ -22,4 +22,13 @@ public class EnemyStatus : MonoBehaviour
         yield return new WaitForSeconds(1);   
         ObjectPooler.instance.ReturnToPool("Enemy", gameObject);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out ProjectileController projectileController))
+        {
+            enemyHealty -= 50;
+
+        }
+    }
+
 }
