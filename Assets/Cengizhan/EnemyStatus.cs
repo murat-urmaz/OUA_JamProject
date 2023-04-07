@@ -3,7 +3,7 @@ using UnityEngine;
 using ObjectPooling;
 public class EnemyStatus : MonoBehaviour
 {
-    [SerializeField] float enemyHealty;
+    public float enemyHealty;
     //[SerializeField] EnemyAnimations enemyAnimations;
     public void DealDamage(int damage)
     {

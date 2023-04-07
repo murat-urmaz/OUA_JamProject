@@ -20,6 +20,7 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnDelay);
 
             GameObject newEnemy = ObjectPooler.instance.SpawnFromPool("Enemy", SpawnPoint[Random.Range(0, SpawnPoint.Length)].position, Quaternion.identity);
+            newEnemy.GetComponent<EnemyStatus>().enemyHealty = 100;
             newEnemy.GetComponent<EnemyMove>().targetTransform = playerTrasform;
         }
 

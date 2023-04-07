@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5272967298919363741}
   - component: {fileID: 5272967298919363740}
   - component: {fileID: 5272967298919363742}
+  - component: {fileID: 5045708759272145482}
   - component: {fileID: 5272967298919363712}
   - component: {fileID: 5272967298919363743}
   m_Layer: 0
@@ -105,6 +106,19 @@ MonoBehaviour:
   range: 2
   fireRate: 0.5
   rigidbody2D: {fileID: 5272967298919363712}
+--- !u!114 &5045708759272145482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5272967298919363739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63b832ec9bc44446b80c4cd711d4b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealty: 100
 --- !u!50 &5272967298919363712
 Rigidbody2D:
   serializedVersion: 4
