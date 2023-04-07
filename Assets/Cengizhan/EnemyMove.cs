@@ -25,7 +25,7 @@ public class EnemyMove : MonoBehaviour
             targetPosition.y = transform.position.y;
             if (Vector2.Distance(targetTransform.position, transform.position) >= range)
             {
-                print(Vector2.Distance(targetTransform.position, transform.position));
+                
                 Vector3 direction = targetTransform.position - transform.position;
                 direction.Normalize();
                 rigidbody2D.MovePosition(transform.position + direction * speed * Time.fixedDeltaTime);
