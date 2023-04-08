@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public event Action OnLevelUp;
     public float speed = 5f;
     private Vector2 direction;
     public GameObject bullet;
@@ -10,19 +13,23 @@ public class PlayerController : MonoBehaviour
     public int bulletDamage = 1;
     public int playerScore = 0;
     public int playerLevel = 0;
-    public ProjectileController ProjectileController;
     public bool isPlayerLevelUp = false;
-
     private Rigidbody2D CharRB;
-    
+    [SerializeField] Text score;
+
+   
     private void Start() {
         CharRB = GetComponent<Rigidbody2D>();
+        //score.text = "Skor: " + playerScore.ToString();
+
     }
     private void Update()
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
         direction = new Vector2(horizontalInput, verticalInput).normalized;
+        levelCheck();
+       // scoreText();
     }
 
     private void FixedUpdate()
@@ -30,9 +37,8 @@ public class PlayerController : MonoBehaviour
         characterMovement();
         timer += Time.deltaTime;
         instantiateBullet();
-
-
     }
+    
     void characterMovement()
     {
         //transform.Translate(direction * speed * Time.fixedDeltaTime); // Not work for collisions
@@ -43,7 +49,8 @@ public class PlayerController : MonoBehaviour
         if (timer >= interval)
         {
             
-            Instantiate(bullet, transform.position, Quaternion.identity);
+            Instantiate(bullet, transform.position, Quaternion.identity).GetComponent<ProjectileController>();
+           
             timer = 0f; 
         }
     }
@@ -51,17 +58,19 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.CompareTag("Experience"))
         {
-            Destroy(collision);
+            Destroy(collision.gameObject);
             playerScore += 1;
             Debug.Log("mmmh deneyim");
         }
     }
     void levelCheck()
     {
-        if(playerScore > 9)
+       
+        if(playerScore > 9 || Input.GetKeyDown(KeyCode.Escape))
         {
             playerLevel += 1;
-            isPlayerLevelUp = true;
+            OnLevelUp?.Invoke();
+            Debug.Log("Level atladimmm!!!");
             //level atlama animasyonu ve skill secme ekrani secmek adina bir ekranin cikmasi
         }
 
@@ -69,5 +78,13 @@ public class PlayerController : MonoBehaviour
     public void fasterCharacter()
     {
         speed += 1f;
+    }
+    public void maxHealth()
+    {
+
+    }
+   public void scoreText()
+    {
+        score.text = "Skor: " + playerScore.ToString();
     }
 }

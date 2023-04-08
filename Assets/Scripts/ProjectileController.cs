@@ -5,8 +5,7 @@ public class ProjectileController : MonoBehaviour
     public float speed = 5f;
     public float attackRange = 10f; 
     private GameObject target;
-    GameObject PlayerController;
-    public bool thereIsEnemy;
+    public bool thereIsEnemy = true;
 
     private void Start()
     {
@@ -41,17 +40,18 @@ public class ProjectileController : MonoBehaviour
     {
         if (target != null)
         {
-            
+            thereIsEnemy = true;
             Vector3 direction = (target.transform.position - transform.position).normalized;
             transform.position += direction * speed * Time.deltaTime;
-            
 
 
         }
         else
         {
+            thereIsEnemy = false;
             FindNearestEnemy();
             
+
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -65,6 +65,7 @@ public class ProjectileController : MonoBehaviour
     public void incSpeed()
     {
         speed += 3;
+
     }
     
     
