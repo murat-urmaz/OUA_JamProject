@@ -12,7 +12,12 @@ public class PlayerController : MonoBehaviour
     public int playerLevel = 0;
     public ProjectileController ProjectileController;
     public bool isPlayerLevelUp = false;
+
+    private Rigidbody2D CharRB;
     
+    private void Start() {
+        CharRB = GetComponent<Rigidbody2D>();
+    }
     private void Update()
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -30,7 +35,8 @@ public class PlayerController : MonoBehaviour
     }
     void characterMovement()
     {
-        transform.Translate(direction * speed * Time.fixedDeltaTime);
+        //transform.Translate(direction * speed * Time.fixedDeltaTime); // Not work for collisions
+        CharRB.MovePosition(CharRB.position + direction * speed * Time.deltaTime);
     }
     void instantiateBullet()
     {
