@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public int playerScore = 0;
     public int playerLevel = 0;
     public ProjectileController ProjectileController;
+    public bool isPlayerLevelUp = false;
     
     private void Update()
     {
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour
         if(playerScore > 9)
         {
             playerLevel += 1;
+            isPlayerLevelUp = true;
             //level atlama animasyonu ve skill secme ekrani secmek adina bir ekranin cikmasi
         }
 
