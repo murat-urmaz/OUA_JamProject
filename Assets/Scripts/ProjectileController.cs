@@ -5,11 +5,13 @@ public class ProjectileController : MonoBehaviour
     public float speed = 5f;
     public float attackRange = 10f; 
     private GameObject target;
-    public bool thereIsEnemy = true;
+    
+    
 
     private void Start()
     {
-        FindNearestEnemy(); 
+        FindNearestEnemy();
+      
     }
 
     private void Update()
@@ -40,7 +42,7 @@ public class ProjectileController : MonoBehaviour
     {
         if (target != null)
         {
-            thereIsEnemy = true;
+            
             Vector3 direction = (target.transform.position - transform.position).normalized;
             transform.position += direction * speed * Time.deltaTime;
 
@@ -48,7 +50,7 @@ public class ProjectileController : MonoBehaviour
         }
         else
         {
-            thereIsEnemy = false;
+            
             FindNearestEnemy();
             
 
@@ -62,11 +64,7 @@ public class ProjectileController : MonoBehaviour
             Debug.Log("heey buradayým");
         }
     }
-    public void incSpeed()
-    {
-        speed += 3;
-
-    }
+    
     
     
 }

@@ -7,8 +7,7 @@ public class PowerupSelection : MonoBehaviour
 {
     [SerializeField] GameObject panel;
     PauseManager pauseManager;
-    PlayerController playerController;
-    ProjectileController projectileController;
+    public PlayerController playerController;
     RotateAround rotateAround;
     public Button fasterButton;
     public Button biggerPencil;
@@ -17,7 +16,7 @@ public class PowerupSelection : MonoBehaviour
 
     private void Awake()
     {
-        playerController = FindObjectOfType<PlayerController>();
+        
         fasterButton.onClick.AddListener(() => 
         {
             playerController.fasterCharacter();
@@ -26,10 +25,10 @@ public class PowerupSelection : MonoBehaviour
 
 
         });
-        projectileController = FindObjectOfType<ProjectileController>();
+       
         fasterBullet.onClick.AddListener(() =>
         {
-            projectileController.incSpeed();
+            playerController.incSpeed();
             pauseManager.UnpauseGame();
             panel.SetActive(false);
 

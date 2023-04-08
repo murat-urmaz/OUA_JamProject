@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,12 +16,15 @@ public class PlayerController : MonoBehaviour
     public int playerLevel = 0;
     public bool isPlayerLevelUp = false;
     private Rigidbody2D CharRB;
-    [SerializeField] Text score;
+    [SerializeField] TextMeshProUGUI score;
+    int bulletspeed = 5;
+    public int forLevelScore = 0;
+    
 
    
     private void Start() {
         CharRB = GetComponent<Rigidbody2D>();
-        //score.text = "Skor: " + playerScore.ToString();
+        score.text = "Skor: " + playerScore.ToString();
 
     }
     private void Update()
@@ -29,7 +33,7 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxisRaw("Vertical");
         direction = new Vector2(horizontalInput, verticalInput).normalized;
         levelCheck();
-       // scoreText();
+       scoreText();
     }
 
     private void FixedUpdate()
@@ -46,11 +50,13 @@ public class PlayerController : MonoBehaviour
     }
     void instantiateBullet()
     {
+
         if (timer >= interval)
         {
-            
-            Instantiate(bullet, transform.position, Quaternion.identity).GetComponent<ProjectileController>();
-           
+
+            GameObject Newbullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            Newbullet.GetComponent<ProjectileController>().speed=bulletspeed;
+
             timer = 0f; 
         }
     }
@@ -60,15 +66,18 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             playerScore += 1;
+            forLevelScore += 1;
             Debug.Log("mmmh deneyim");
         }
     }
     void levelCheck()
     {
        
-        if(playerScore > 9 || Input.GetKeyDown(KeyCode.Escape))
+        if(forLevelScore > 9 || Input.GetKeyDown(KeyCode.Escape))
         {
             playerLevel += 1;
+            forLevelScore = 0;
+            
             OnLevelUp?.Invoke();
             Debug.Log("Level atladimmm!!!");
             //level atlama animasyonu ve skill secme ekrani secmek adina bir ekranin cikmasi
@@ -86,5 +95,10 @@ public class PlayerController : MonoBehaviour
    public void scoreText()
     {
         score.text = "Skor: " + playerScore.ToString();
+    }
+    public void incSpeed()
+    {
+        bulletspeed += 3;
+
     }
 }
