@@ -66,4 +66,8 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    public void fasterCharacter()
+    {
+        speed += 1f;
+    }
 }

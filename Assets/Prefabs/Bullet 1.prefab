@@ -126,3 +126,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   attackRange: 10
+  thereIsEnemy: 0
