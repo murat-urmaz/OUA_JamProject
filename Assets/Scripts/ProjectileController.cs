@@ -40,7 +40,7 @@ public class ProjectileController : MonoBehaviour
     {
         if (target != null)
         {
-            // Hedef düþmanýn konumuna doðru hareket et
+            
             Vector3 direction = (target.transform.position - transform.position).normalized;
             transform.position += direction * speed * Time.deltaTime;
 
