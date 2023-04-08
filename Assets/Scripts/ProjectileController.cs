@@ -62,5 +62,10 @@ public class ProjectileController : MonoBehaviour
             Debug.Log("heey buradayým");
         }
     }
+    public void incSpeed()
+    {
+        speed += 3;
+    }
+    
     
 }
