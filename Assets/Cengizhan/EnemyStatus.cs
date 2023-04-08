@@ -35,6 +35,11 @@ public class EnemyStatus : MonoBehaviour
             
 
         }
+        if (collision.gameObject.CompareTag("Pencil"))
+        {
+            DealDamage(50);
+            Debug.Log("kalemle vurdum hehe");
+        }
     }
 
 }
