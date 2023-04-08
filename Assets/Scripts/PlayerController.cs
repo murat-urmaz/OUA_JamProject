@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         direction = new Vector2(horizontalInput, verticalInput).normalized;
         levelCheck();
         scoreText();
-        Debug.Log(health);
+        //Debug.Log(health);
         
     }
 

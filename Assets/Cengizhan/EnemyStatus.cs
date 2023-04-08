@@ -22,7 +22,7 @@ public class EnemyStatus : MonoBehaviour
     {
         
         //yield return new WaitForSeconds(enemyAnimations.enemyAnimator.GetCurrentAnimatorStateInfo(0).length);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.1f);
         Instantiate(exp, transform.position, Quaternion.identity);
         ObjectPooler.instance.ReturnToPool("Enemy", gameObject);
         

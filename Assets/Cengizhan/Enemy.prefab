@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealty: 100
+  exp: {fileID: 4542348876222488489, guid: 016dea106a10c50449e375446dc2c62f, type: 3}
 --- !u!50 &5272967298919363712
 Rigidbody2D:
   serializedVersion: 4
