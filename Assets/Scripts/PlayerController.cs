@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI score;
     int bulletspeed = 5;
     public int forLevelScore = 0;
-    
+    public int health = 100;
 
    
     private void Start() {
@@ -33,7 +33,9 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxisRaw("Vertical");
         direction = new Vector2(horizontalInput, verticalInput).normalized;
         levelCheck();
-       scoreText();
+        scoreText();
+        Debug.Log(health);
+        
     }
 
     private void FixedUpdate()
@@ -51,7 +53,7 @@ public class PlayerController : MonoBehaviour
     void instantiateBullet()
     {
 
-        if (timer >= interval)
+        if (timer >= interval && enemyControl())
         {
 
             GameObject Newbullet = Instantiate(bullet, transform.position, Quaternion.identity);
@@ -69,6 +71,11 @@ public class PlayerController : MonoBehaviour
             forLevelScore += 1;
             Debug.Log("mmmh deneyim");
         }
+        if (collision.CompareTag("Enemy"))
+        {
+            health -= 10;
+        }
+
     }
     void levelCheck()
     {
@@ -100,5 +107,17 @@ public class PlayerController : MonoBehaviour
     {
         bulletspeed += 3;
 
+    }
+    public bool enemyControl()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if(enemies.Length !=0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

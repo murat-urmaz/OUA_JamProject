@@ -5,6 +5,7 @@ public class ProjectileController : MonoBehaviour
     public float speed = 5f;
     public float attackRange = 10f; 
     private GameObject target;
+    public float distance;
     
     
 
@@ -45,15 +46,18 @@ public class ProjectileController : MonoBehaviour
             
             Vector3 direction = (target.transform.position - transform.position).normalized;
             transform.position += direction * speed * Time.deltaTime;
+            if (Vector2.Distance(transform.position,target.transform.position)<distance)
+            {
+                gameObject.SetActive(false);
+            }
 
 
         }
         else
         {
-            
-            FindNearestEnemy();
-            
 
+            gameObject.SetActive(false);
+            
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
