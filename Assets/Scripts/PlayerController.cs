@@ -29,14 +29,24 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] AudioSource audioSource;
 
+    public Slider Healthbar;
+    public Slider ExperienceBar;
+    public TextMeshProUGUI Level;
+
+    private bool isGameStarted = false;
+
+    public void StartGame(){
+        isGameStarted = true;
+    }
+
     private void Start() {
         CharRB = GetComponent<Rigidbody2D>();
         CharSR = GetComponent<SpriteRenderer>();
-        score.text = "Skor: " + playerScore.ToString();
+        score.text = playerScore.ToString();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         healthScore.text = "Can: " + health.ToString(); //sadece g�r�nmesi i�in eklendi
-
+        Healthbar.value = health;
     }
     private void Update()
     {
@@ -48,15 +58,21 @@ public class PlayerController : MonoBehaviour
         animControl();
         faceCheck();
         healthScore.text = "Health: " + health.ToString(); //sadece �imdilik g�r�nmesi i�in eklendi
+        Healthbar.value = health;
+        ExperienceBar.value = forLevelScore;
+        Level.text = playerLevel.ToString();
+
         //Debug.Log(health);
 
     }
 
     private void FixedUpdate()
     {
+        if(isGameStarted){
         characterMovement();
         timer += Time.deltaTime;
         instantiateBullet();
+        }
     }
     
     void characterMovement()

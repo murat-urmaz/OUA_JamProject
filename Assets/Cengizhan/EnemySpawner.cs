@@ -10,10 +10,19 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float[] spawnDelay;
     [SerializeField] PlayerController playerController;
     [SerializeField] float[] enemyBornTime;
+
+    [SerializeField] string[] EnemyTypes;
+
+    private bool isGameStarted = false;
     
 
     void Start()
     {
+        //StartCoroutine(SpawnTimer());
+    }
+
+    public void StartGame(){
+        //isGameStarted = true;
         StartCoroutine(SpawnTimer());
     }
 
@@ -38,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
 
             yield return new WaitForSeconds(spawnDelay[0]);
 
-            GameObject newEnemy = ObjectPooler.instance.SpawnFromPool("Enemy", SpawnPoint[Random.Range(0, SpawnPoint.Length)].position, Quaternion.identity);
+            GameObject newEnemy = ObjectPooler.instance.SpawnFromPool(EnemyTypes[Random.Range(0, EnemyTypes.Length)], SpawnPoint[Random.Range(0, SpawnPoint.Length)].position, Quaternion.identity);
             newEnemy.GetComponent<EnemyStatus>().enemyHealty = 100;
             newEnemy.GetComponent<EnemyMove>().targetTransform = playerTrasform;
         }
