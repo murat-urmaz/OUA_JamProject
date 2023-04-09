@@ -20,22 +20,30 @@ public class PlayerController : MonoBehaviour
     int bulletspeed = 5;
     public int forLevelScore = 0;
     public int health = 100;
+    private Animator anim;
+    public float verticalInput;
+    public float horizontalInput;
+    private SpriteRenderer spriteRenderer;
 
-   
+
     private void Start() {
         CharRB = GetComponent<Rigidbody2D>();
         score.text = "Skor: " + playerScore.ToString();
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
     }
     private void Update()
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
         direction = new Vector2(horizontalInput, verticalInput).normalized;
         levelCheck();
         scoreText();
+        animControl();
+        faceCheck();
         //Debug.Log(health);
-        
+
     }
 
     private void FixedUpdate()
@@ -118,6 +126,28 @@ public class PlayerController : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+    void animControl()
+    {
+        if(horizontalInput == 0 && verticalInput == 0)
+        {
+            anim.SetBool("movingBool", false);
+        }
+        else
+        {
+            anim.SetBool("movingBool", true);
+        }
+    }
+    void faceCheck()
+    {
+        if (horizontalInput > 0) 
+        {
+            spriteRenderer.flipX = false; 
+        }
+        else if (horizontalInput < 0) 
+        {
+            spriteRenderer.flipX = true; 
         }
     }
 }

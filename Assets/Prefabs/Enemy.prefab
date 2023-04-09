@@ -103,7 +103,7 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   speed: 1.5
   smoothness: 0.5
-  range: 2
+  range: 0.01
   fireRate: 0.5
   rigidbody2D: {fileID: 4009885302436714651}
 --- !u!114 &4075014254428974673
