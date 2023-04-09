@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     private Vector2 direction;
     public GameObject bullet;
-    public float interval = 10f;
+    public float interval = 5f;
     private float timer = 0f;
     public int bulletDamage = 1;
     public int playerScore = 0;
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool isFacingRight = true;
     [SerializeField] TextMeshProUGUI score;
     [SerializeField] TextMeshProUGUI healthScore;
-    int bulletspeed = 5;
+    int bulletspeed = 15;
     public int forLevelScore = 0;
     public int health = 100;
     private Animator anim;
@@ -29,14 +29,23 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] AudioSource audioSource;
 
+    public GameObject GameManagerRef;
+    private PauseManager pauseManager;
+
     public Slider Healthbar;
     public Slider ExperienceBar;
     public TextMeshProUGUI Level;
+    public TextMeshProUGUI FinalScore;
+
+    public GameObject endGameGUI;
 
     private bool isGameStarted = false;
 
+    public GameObject DamageTextPrefab;
+
     public void StartGame(){
         isGameStarted = true;
+        pauseManager = GameManagerRef.GetComponent<PauseManager>();
     }
 
     private void Start() {
@@ -119,6 +128,18 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             health -= 10; 
+            var text = Instantiate(DamageTextPrefab,transform.position + new Vector3(0,2f,0), Quaternion.identity, transform);
+            text.GetComponent<TextMesh>().text = "10";
+            text.GetComponent<TextMesh>().color = Color.red;
+            DeathCheck();
+        }
+    }
+
+    private void DeathCheck(){
+
+        if(health<=0){
+            endGameGUI.SetActive(true);
+            pauseManager.PauseGame();
         }
     }
     void levelCheck()
@@ -145,13 +166,15 @@ public class PlayerController : MonoBehaviour
     }
    public void scoreText()
     {
-        score.text = "Skor: " + playerScore.ToString();
+        score.text = playerScore.ToString();
+        FinalScore.text = playerScore.ToString();;
     }
 
     public void incSpeed()
     {
-        bulletspeed += 3;
-
+        if(interval>0.5f){
+            interval -= 0.5f;
+        }
     }
     public bool enemyControl()
     {

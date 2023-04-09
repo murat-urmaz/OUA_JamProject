@@ -42,7 +42,7 @@ public class RotateAround : MonoBehaviour
     }
     public void biggerPencil()
     {
-        transform.localScale = transform.localScale + new Vector3(0, 1.5f, 0);
+        transform.localScale = transform.localScale *1.1f;
     }
     public void fasterPencil()
     {

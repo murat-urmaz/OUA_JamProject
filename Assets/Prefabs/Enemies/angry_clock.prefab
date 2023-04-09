@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4165315127638840063}
   m_Layer: 0
   m_Name: angry_clock
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4165315127638840032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.8, y: 6.48, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 5d9070465a4ed3747b926b6222919b3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,18 +101,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0011406988, y: 0.015025616}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.86, y: 6.65}
+    oldSize: {x: 0.686, y: 0.665}
     newSize: {x: 6.86, y: 6.65}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.86, y: 6.65}
+  m_Size: {x: 0.5053618, y: 0.5578518}
   m_EdgeRadius: 0
 --- !u!50 &4165315127638840061
 Rigidbody2D:
@@ -165,5 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63b832ec9bc44446b80c4cd711d4b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealty: 100
+  enemyHealty: 120
   exp: {fileID: 4542348876222488489, guid: 016dea106a10c50449e375446dc2c62f, type: 3}
+  damageTextPrefab: {fileID: 8067518250051713932, guid: fed0f5d36faef304d9c4c2cadc1e0bae, type: 3}
+  audioSource: {fileID: 0}
+  GameManagerRef: {fileID: 0}
+  PoolName: Clock

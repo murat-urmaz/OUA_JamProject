@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3232580383268159815}
   m_Layer: 0
   m_Name: ogretmen
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2938487938544324983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.89, y: 5.82, z: 0}
-  m_LocalScale: {x: 0.45, y: 0.45, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 2d0eb5c242eeca14ab37804f09479b75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -145,18 +145,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.27506232, y: 0.22921884}
+  m_Offset: {x: -0.098945335, y: 0.07002485}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 16.67, y: 16.67}
+    oldSize: {x: 4.1675, y: 4.1675}
     newSize: {x: 16.67, y: 16.67}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7334952, y: 6.309313}
+  m_Size: {x: 0.44750276, y: 1.3751771}
   m_EdgeRadius: 0
 --- !u!114 &2938487938544324940
 MonoBehaviour:
@@ -188,10 +188,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63b832ec9bc44446b80c4cd711d4b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealty: 100
+  enemyHealty: 200
   exp: {fileID: 4542348876222488489, guid: 016dea106a10c50449e375446dc2c62f, type: 3}
-  damageTextPrefab: {fileID: 0}
+  damageTextPrefab: {fileID: 8067518250051713932, guid: fed0f5d36faef304d9c4c2cadc1e0bae, type: 3}
   audioSource: {fileID: 3232580383268159815}
+  GameManagerRef: {fileID: 0}
+  PoolName: Teacher
 --- !u!82 &3232580383268159815
 AudioSource:
   m_ObjectHideFlags: 0
@@ -204,7 +206,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b1b9c1f0ea1fcae439ed1a4d44ff05fd, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.01
   m_Pitch: 1
   Loop: 0
   Mute: 0

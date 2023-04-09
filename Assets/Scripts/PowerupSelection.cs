@@ -14,6 +14,8 @@ public class PowerupSelection : MonoBehaviour
     public Button fasterPencil;
     public Button fasterBullet;
 
+    public int BulletDamage = 30;
+
     private void Awake()
     {
         
@@ -37,7 +39,8 @@ public class PowerupSelection : MonoBehaviour
         rotateAround = FindObjectOfType<RotateAround>();
         biggerPencil.onClick.AddListener(() =>
         {
-            rotateAround.biggerPencil();
+            //rotateAround.biggerPencil();
+            BulletDamage += 10;
             pauseManager.UnpauseGame();
             panel.SetActive(false);
 

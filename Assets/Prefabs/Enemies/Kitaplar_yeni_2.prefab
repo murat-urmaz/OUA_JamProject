@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 8
   m_Sprite: {fileID: -911975036, guid: f3b52bcccb89caa45a588aaa0278def4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -166,10 +166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63b832ec9bc44446b80c4cd711d4b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealty: 100
+  enemyHealty: 90
   exp: {fileID: 4542348876222488489, guid: 016dea106a10c50449e375446dc2c62f, type: 3}
   damageTextPrefab: {fileID: 8067518250051713932, guid: fed0f5d36faef304d9c4c2cadc1e0bae, type: 3}
   audioSource: {fileID: -45219023756832464, guid: 9292f9b32f7515944a83c9304d862d2a, type: 3}
+  GameManagerRef: {fileID: 0}
+  PoolName: Book3
 --- !u!82 &-6963431864863394312
 AudioSource:
   m_ObjectHideFlags: 0
@@ -181,8 +183,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ab297b593498a6e47ba84de770477cbe, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_PlayOnAwake: 1
+  m_Volume: 0.01
   m_Pitch: 1
   Loop: 0
   Mute: 0

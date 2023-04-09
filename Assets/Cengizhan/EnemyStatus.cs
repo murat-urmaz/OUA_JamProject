@@ -7,7 +7,20 @@ public class EnemyStatus : MonoBehaviour
     public GameObject exp;
     public GameObject damageTextPrefab;
     [SerializeField] AudioSource audioSource;
+    public GameObject GameManagerRef;
+    private PowerupSelection PowerUpRef;
+
+    public string PoolName;
     //[SerializeField] EnemyAnimations enemyAnimations;
+
+    private void Start() {
+    }
+
+    public void SetGameManagerReference(GameObject GameManagerRef){
+        Debug.Log("Atadım");
+        PowerUpRef = GameManagerRef.GetComponent<PowerupSelection>();
+    }
+
     public void DealDamage(int damage)
     {
         enemyHealty -= damage;
@@ -17,7 +30,7 @@ public class EnemyStatus : MonoBehaviour
             StartCoroutine(WaitForAnimationToEnd());
         }
         else if(damageTextPrefab!=null){
-            var text = Instantiate(damageTextPrefab,transform.position + new Vector3(0,1.2f,0), Quaternion.identity, transform);
+            var text = Instantiate(damageTextPrefab,transform.position + new Vector3(0,1.3f,0), Quaternion.identity, transform);
             text.GetComponent<TextMesh>().text = damage.ToString();
         }
 
@@ -27,7 +40,7 @@ public class EnemyStatus : MonoBehaviour
         //yield return new WaitForSeconds(enemyAnimations.enemyAnimator.GetCurrentAnimatorStateInfo(0).length);
         yield return new WaitForSeconds(0.1f);
         Instantiate(exp, transform.position, Quaternion.identity);
-        ObjectPooler.instance.ReturnToPool("Enemy", gameObject);
+        ObjectPooler.instance.ReturnToPool(PoolName, gameObject);
         audioSource.Play();
         
     }
@@ -35,13 +48,13 @@ public class EnemyStatus : MonoBehaviour
     {
         if (collision.TryGetComponent(out ProjectileController projectileController))
         {
-            DealDamage(50);
+            DealDamage(PowerUpRef.BulletDamage);
             
 
         }
         if (collision.gameObject.CompareTag("Pencil"))
         {
-            DealDamage(50);
+            DealDamage(PowerUpRef.BulletDamage);
             Debug.Log("kalemle vurdum hehe");
         }
     }

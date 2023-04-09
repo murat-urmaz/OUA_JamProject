@@ -135,6 +135,10 @@ MonoBehaviour:
   health: 100
   verticalInput: 0
   horizontalInput: 0
+  audioSource: {fileID: 0}
+  Healthbar: {fileID: 0}
+  ExperienceBar: {fileID: 0}
+  Level: {fileID: 0}
 --- !u!50 &2088486691031879066
 Rigidbody2D:
   serializedVersion: 4
@@ -215,7 +219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8061765433890323519, guid: 1fa69d913ec13dc4cab4f72b3d27446c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8061765433890323519, guid: 1fa69d913ec13dc4cab4f72b3d27446c, type: 3}
       propertyPath: m_LocalPosition.y
