@@ -1161,6 +1161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 698970232}
   - component: {fileID: 698970231}
+  - component: {fileID: 698970233}
   m_Layer: 0
   m_Name: CameraController
   m_TagString: Untagged
@@ -1204,6 +1205,18 @@ Transform:
   m_Father: {fileID: 117712708}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &698970233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698970230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1010697e3d95e04f917fd0c338e835c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &760356927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,6 +1741,7 @@ GameObject:
   - component: {fileID: 1015956149}
   - component: {fileID: 1015956148}
   - component: {fileID: 1015956147}
+  - component: {fileID: 1015956151}
   m_Layer: 5
   m_Name: MainUI
   m_TagString: Untagged
@@ -1818,6 +1832,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1015956151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015956146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe00d87c1b991ed4790ff5df33da37e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1115154350 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8918042989864340842, guid: 0674de9ef79fead458e3550c070685ef, type: 3}
@@ -1841,6 +1867,7 @@ GameObject:
   - component: {fileID: 1157382906}
   - component: {fileID: 1157382905}
   - component: {fileID: 1157382908}
+  - component: {fileID: 1157382909}
   m_Layer: 0
   m_Name: StartLetter
   m_TagString: Untagged
@@ -1951,6 +1978,18 @@ MonoBehaviour:
   Clicker: {fileID: 421221772}
   OpenText: {fileID: 444494526}
   LetterText: {fileID: 949260999}
+--- !u!114 &1157382909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157382904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe00d87c1b991ed4790ff5df33da37e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1208179041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2671,7 +2710,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1617061022}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 698970233}
+        m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
+        m_MethodName: SwitchCameras
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1015956151}
+        m_TargetAssemblyTypeName: MainInterfaceHandler, Assembly-CSharp
+        m_MethodName: DeactivateInterface
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1157382909}
+        m_TargetAssemblyTypeName: MainInterfaceHandler, Assembly-CSharp
+        m_MethodName: DeactivateInterface
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1617061022
 MonoBehaviour:
   m_ObjectHideFlags: 0
