@@ -6,6 +6,7 @@ public class EnemyStatus : MonoBehaviour
     public float enemyHealty;
     public GameObject exp;
     public GameObject damageTextPrefab;
+    [SerializeField] AudioSource audioSource;
     //[SerializeField] EnemyAnimations enemyAnimations;
     public void DealDamage(int damage)
     {
@@ -27,6 +28,7 @@ public class EnemyStatus : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Instantiate(exp, transform.position, Quaternion.identity);
         ObjectPooler.instance.ReturnToPool("Enemy", gameObject);
+        audioSource.Play();
         
     }
     private void OnTriggerEnter2D(Collider2D collision)
