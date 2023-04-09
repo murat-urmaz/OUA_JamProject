@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool isPlayerLevelUp = false;
     private Rigidbody2D CharRB;
     [SerializeField] TextMeshProUGUI score;
+    [SerializeField] TextMeshProUGUI healthScore;
     int bulletspeed = 5;
     public int forLevelScore = 0;
     public int health = 100;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
         score.text = "Skor: " + playerScore.ToString();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        healthScore.text = "Can: " + health.ToString(); //sadece görünmesi için eklendi
 
     }
     private void Update()
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
         scoreText();
         animControl();
         faceCheck();
+        healthScore.text = "Health: " + health.ToString(); //sadece þimdilik görünmesi için eklendi
         //Debug.Log(health);
 
     }
@@ -79,11 +82,13 @@ public class PlayerController : MonoBehaviour
             forLevelScore += 1;
             Debug.Log("mmmh deneyim");
         }
-        if (collision.CompareTag("Enemy"))
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            health -= 10;
+            health -= 10; 
         }
-
     }
     void levelCheck()
     {
@@ -111,6 +116,7 @@ public class PlayerController : MonoBehaviour
     {
         score.text = "Skor: " + playerScore.ToString();
     }
+
     public void incSpeed()
     {
         bulletspeed += 3;
