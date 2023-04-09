@@ -53,7 +53,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7717904714716827114, guid: 1961847acafa02646b3da45c9eec5e3b, type: 3}
       propertyPath: m_Name
-      value: ObjetPool
+      value: ObjetPool Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717904714716827114, guid: 1961847acafa02646b3da45c9eec5e3b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7717904714716827115, guid: 1961847acafa02646b3da45c9eec5e3b, type: 3}
       propertyPath: pools.Array.size
