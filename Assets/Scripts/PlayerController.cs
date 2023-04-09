@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     private Vector2 direction;
     public GameObject bullet;
-    public float interval = 1f;
+    public float interval = 10f;
     private float timer = 0f;
     public int bulletDamage = 1;
     public int playerScore = 0;
@@ -80,10 +80,12 @@ public class PlayerController : MonoBehaviour
         if (timer >= interval && enemyControl())
         {
 
+            Debug.Log("Timer:" + timer);
+            Debug.Log("Interval:" + interval);
+            timer = 0;
             GameObject Newbullet = Instantiate(bullet, transform.position, Quaternion.identity);
             Newbullet.GetComponent<ProjectileController>().speed=bulletspeed;
             audioSource.Play();
-            timer = 0f; 
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
