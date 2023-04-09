@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public float verticalInput;
     public float horizontalInput;
     private SpriteRenderer spriteRenderer;
-
+    [SerializeField] AudioSource audioSource;
 
     private void Start() {
         CharRB = GetComponent<Rigidbody2D>();
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
             GameObject Newbullet = Instantiate(bullet, transform.position, Quaternion.identity);
             Newbullet.GetComponent<ProjectileController>().speed=bulletspeed;
-
+            audioSource.Play();
             timer = 0f; 
         }
     }
