@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public int playerLevel = 0;
     public bool isPlayerLevelUp = false;
     private Rigidbody2D CharRB;
+    private SpriteRenderer CharSR;
+    private bool isFacingRight = true;
     [SerializeField] TextMeshProUGUI score;
     [SerializeField] TextMeshProUGUI healthScore;
     int bulletspeed = 5;
@@ -29,10 +31,11 @@ public class PlayerController : MonoBehaviour
 
     private void Start() {
         CharRB = GetComponent<Rigidbody2D>();
+        CharSR = GetComponent<SpriteRenderer>();
         score.text = "Skor: " + playerScore.ToString();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        healthScore.text = "Can: " + health.ToString(); //sadece görünmesi için eklendi
+        healthScore.text = "Can: " + health.ToString(); //sadece gï¿½rï¿½nmesi iï¿½in eklendi
 
     }
     private void Update()
@@ -44,7 +47,7 @@ public class PlayerController : MonoBehaviour
         scoreText();
         animControl();
         faceCheck();
-        healthScore.text = "Health: " + health.ToString(); //sadece þimdilik görünmesi için eklendi
+        healthScore.text = "Health: " + health.ToString(); //sadece ï¿½imdilik gï¿½rï¿½nmesi iï¿½in eklendi
         //Debug.Log(health);
 
     }
@@ -59,8 +62,18 @@ public class PlayerController : MonoBehaviour
     void characterMovement()
     {
         //transform.Translate(direction * speed * Time.fixedDeltaTime); // Not work for collisions
+        if(horizontalInput<0 && isFacingRight){
+            CharSR.flipX = true;
+            isFacingRight = false;
+        }
+        else if(horizontalInput>0 && !isFacingRight){
+            CharSR.flipX = false;
+            isFacingRight = true;
+        }
+
         CharRB.MovePosition(CharRB.position + direction * speed * Time.deltaTime);
     }
+    
     void instantiateBullet()
     {
 

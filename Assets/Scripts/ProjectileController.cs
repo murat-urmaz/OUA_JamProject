@@ -37,6 +37,12 @@ public class ProjectileController : MonoBehaviour
                 target = enemy;
             }
         }
+
+        Vector3 direction = target.transform.position - transform.position;
+        float angle = Vector3.Angle(direction, transform.right);
+        Debug.Log(angle);
+        transform.Rotate(new Vector3 (0,0, angle+85));
+
     }
 
     private void controlEnemy()
@@ -51,6 +57,7 @@ public class ProjectileController : MonoBehaviour
                 gameObject.SetActive(false);
             }
 
+           
 
         }
         else

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3898289684836466796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.205845, y: 2.066361, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -167,3 +167,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealty: 100
   exp: {fileID: 4542348876222488489, guid: 016dea106a10c50449e375446dc2c62f, type: 3}
+  damageTextPrefab: {fileID: 8067518250051713932, guid: fed0f5d36faef304d9c4c2cadc1e0bae, type: 3}

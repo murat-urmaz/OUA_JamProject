@@ -5,22 +5,24 @@ public class EnemyStatus : MonoBehaviour
 {
     public float enemyHealty;
     public GameObject exp;
+    public GameObject damageTextPrefab;
     //[SerializeField] EnemyAnimations enemyAnimations;
     public void DealDamage(int damage)
     {
         enemyHealty -= damage;
         if (enemyHealty <= 0)
         {
-            
-            
            // enemyAnimations.DieAnimation();
             StartCoroutine(WaitForAnimationToEnd());
+        }
+        else if(damageTextPrefab!=null){
+            var text = Instantiate(damageTextPrefab,transform.position + new Vector3(0,1.2f,0), Quaternion.identity, transform);
+            text.GetComponent<TextMesh>().text = damage.ToString();
         }
 
     }
     IEnumerator WaitForAnimationToEnd()
     {
-        
         //yield return new WaitForSeconds(enemyAnimations.enemyAnimator.GetCurrentAnimatorStateInfo(0).length);
         yield return new WaitForSeconds(0.1f);
         Instantiate(exp, transform.position, Quaternion.identity);
